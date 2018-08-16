@@ -12,13 +12,13 @@ public class Zoo {
 
     private String nombre;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "zoo")
+    @OneToMany(mappedBy = "zoo")
     private List<Animal> animals;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "zoo")
+    @OneToMany(mappedBy = "zoo")
     private List<Empleado> empleados;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "zoo")
+    @OneToMany(mappedBy = "zoo")
     private List<ZooCliente> zooClientes;
 
     public Zoo(){}
