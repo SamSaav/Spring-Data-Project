@@ -5,7 +5,7 @@ spring:
     password: saam1234
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
 
 server:
   port: 1000
