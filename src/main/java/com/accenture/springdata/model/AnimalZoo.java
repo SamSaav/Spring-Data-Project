@@ -1,4 +1,4 @@
-package com.accenture.springdata.springdata.model;
+package com.accenture.springdata.model;
 
 public enum AnimalZoo {
     LEON,

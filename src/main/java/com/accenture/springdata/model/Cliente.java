@@ -1,4 +1,4 @@
-package com.accenture.springdata.springdata.model;
+package com.accenture.springdata.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -24,6 +24,11 @@ public class Cliente {
         this.id = id;
         this.nombre = nombre;
         this.zooClientes = zooClientes;
+    }
+
+    public void addZooCliente(ZooCliente zooCliente){
+        zooCliente.setCliente(this);
+        zooClientes.add(zooCliente);
     }
 
     public Long getId() {

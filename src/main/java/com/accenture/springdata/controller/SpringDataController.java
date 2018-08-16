@@ -1,7 +1,7 @@
-package com.accenture.springdata.springdata.controller;
+package com.accenture.springdata.controller;
 
-import com.accenture.springdata.springdata.model.ZooCliente;
-import com.accenture.springdata.springdata.service.SpringDataService;
+import com.accenture.springdata.model.ZooCliente;
+import com.accenture.springdata.service.SpringDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

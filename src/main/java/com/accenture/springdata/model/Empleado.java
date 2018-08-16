@@ -1,30 +1,26 @@
-package com.accenture.springdata.springdata.model;
+package com.accenture.springdata.model;
 
 import javax.persistence.*;
 
 @Entity
-public class Animal {
+public class Empleado {
 
     @Id
-<<<<<<< HEAD
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-=======
-    @GeneratedValue(strategy = GenerationType.AUTO)
->>>>>>> 81bbf8ed29742d9d95193b52826c80635e999220
     private Long id;
 
-    private String TipoAnimal;
+    private String nombre;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "zoo_id")
     private Zoo zoo;
 
-    public Animal() {
+    public Empleado() {
     }
 
-    public Animal(Long id, String tipoAnimal, Zoo zoo) {
+    public Empleado(Long id, String nombre, Zoo zoo) {
         this.id = id;
-        TipoAnimal = tipoAnimal;
+        this.nombre = nombre;
         this.zoo = zoo;
     }
 
@@ -36,12 +32,12 @@ public class Animal {
         this.id = id;
     }
 
-    public String getTipoAnimal() {
-        return TipoAnimal;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setTipoAnimal(String tipoAnimal) {
-        TipoAnimal = tipoAnimal;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public Zoo getZoo() {

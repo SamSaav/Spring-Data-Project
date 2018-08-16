@@ -1,4 +1,4 @@
-package com.accenture.springdata.springdata.model;
+package com.accenture.springdata.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -14,7 +14,6 @@ public class Zoo {
 
     private String nombre;
 
-<<<<<<< HEAD
     @OneToMany( mappedBy = "zoo")
     private List<Animal> animals;
 
@@ -22,15 +21,6 @@ public class Zoo {
     private List<Empleado> empleados;
 
     @OneToMany( mappedBy = "zoo")
-=======
-    @OneToMany(mappedBy = "zoo")
-    private List<Animal> animals;
-
-    @OneToMany(mappedBy = "zoo")
-    private List<Empleado> empleados;
-
-    @OneToMany(mappedBy = "zoo")
->>>>>>> 81bbf8ed29742d9d95193b52826c80635e999220
     private List<ZooCliente> zooClientes;
 
     public Zoo(){}
@@ -41,6 +31,11 @@ public class Zoo {
         this.animals = animals;
         this.empleados = empleados;
         this.zooClientes = zooClientes;
+    }
+
+    public void addZooCliente(ZooCliente zooCliente){
+        zooCliente.setZoo(this);
+        zooClientes.add(zooCliente);
     }
 
     public Long getId() {

@@ -1,6 +1,6 @@
-package com.accenture.springdata.springdata.repository;
+package com.accenture.springdata.repository;
 
-import com.accenture.springdata.springdata.model.Animal;
+import com.accenture.springdata.model.Animal;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

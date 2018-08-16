@@ -1,8 +1,7 @@
-package com.accenture.springdata.springdata;
+package com.accenture.springdata;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 
 @SpringBootApplication

@@ -1,6 +1,6 @@
-package com.accenture.springdata.springdata.repository;
+package com.accenture.springdata.repository;
 
-import com.accenture.springdata.springdata.model.Cliente;
+import com.accenture.springdata.model.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
