@@ -1,5 +1,7 @@
 package com.accenture.springdata.springdata.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -7,7 +9,7 @@ import java.util.List;
 public class Cliente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nombre;
@@ -40,6 +42,7 @@ public class Cliente {
         this.nombre = nombre;
     }
 
+    @JsonIgnore
     public List<ZooCliente> getZooClientes() {
         return zooClientes;
     }

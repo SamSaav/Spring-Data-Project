@@ -6,7 +6,11 @@ import javax.persistence.*;
 public class Animal {
 
     @Id
+<<<<<<< HEAD
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+=======
     @GeneratedValue(strategy = GenerationType.AUTO)
+>>>>>>> 81bbf8ed29742d9d95193b52826c80635e999220
     private Long id;
 
     private String TipoAnimal;

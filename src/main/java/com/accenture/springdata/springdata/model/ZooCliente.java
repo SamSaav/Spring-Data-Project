@@ -7,8 +7,8 @@ import java.util.List;
 public class ZooCliente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cliente_id")
@@ -26,11 +26,11 @@ public class ZooCliente {
         this.zoo = zoo;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

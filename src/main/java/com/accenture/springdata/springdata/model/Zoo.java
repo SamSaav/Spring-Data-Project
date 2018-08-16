@@ -1,5 +1,7 @@
 package com.accenture.springdata.springdata.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -7,11 +9,20 @@ import java.util.List;
 public class Zoo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nombre;
 
+<<<<<<< HEAD
+    @OneToMany( mappedBy = "zoo")
+    private List<Animal> animals;
+
+    @OneToMany( mappedBy = "zoo")
+    private List<Empleado> empleados;
+
+    @OneToMany( mappedBy = "zoo")
+=======
     @OneToMany(mappedBy = "zoo")
     private List<Animal> animals;
 
@@ -19,6 +30,7 @@ public class Zoo {
     private List<Empleado> empleados;
 
     @OneToMany(mappedBy = "zoo")
+>>>>>>> 81bbf8ed29742d9d95193b52826c80635e999220
     private List<ZooCliente> zooClientes;
 
     public Zoo(){}
@@ -63,6 +75,7 @@ public class Zoo {
         this.empleados = empleados;
     }
 
+    @JsonIgnore
     public List<ZooCliente> getZooClientes() {
         return zooClientes;
     }

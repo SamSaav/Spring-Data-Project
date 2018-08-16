@@ -1,6 +1,5 @@
 package com.accenture.springdata.springdata.controller;
 
-import com.accenture.springdata.springdata.model.Zoo;
 import com.accenture.springdata.springdata.model.ZooCliente;
 import com.accenture.springdata.springdata.service.SpringDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ public class SpringDataController {
 
     @GetMapping("/zoo/{id}")
     @ResponseBody
-    public ZooCliente getZooClient(@PathVariable("id") Long id){
+    public ZooCliente getZooClient(@PathVariable("id") Integer id){
         return springDataService.getById(id);
     }
 
@@ -30,7 +29,7 @@ public class SpringDataController {
     @ResponseBody
     public ZooCliente saveZooClient(@RequestBody ZooCliente zooCliente){
         springDataService.saveZooClient(zooCliente);
-        return springDataService.getById(zooCliente.getId());
+        return zooCliente;
     }
 
 }
