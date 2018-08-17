@@ -20,14 +20,11 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(Long id, String nombre, List<ZooCliente> zooClientes) {
-        this.id = id;
+    public Cliente(String nombre) {
         this.nombre = nombre;
-        this.zooClientes = zooClientes;
     }
 
-    public void addZooCliente(ZooCliente zooCliente){
-        zooCliente.setCliente(this);
+    public void setOneZooCliente(ZooCliente zooCliente){
         zooClientes.add(zooCliente);
     }
 

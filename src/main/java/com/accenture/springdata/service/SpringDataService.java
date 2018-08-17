@@ -9,6 +9,8 @@ import com.accenture.springdata.repository.ZooRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -33,18 +35,39 @@ public class SpringDataService {
 
     public boolean saveZooClient(ZooCliente zooCliente){
         List<ZooCliente> lstZooClient = zooClienteRepository.findAll();
-        List<Cliente> lstClientes = clienteRepository.findAll();
-        List<Zoo> lstZoo = zooRepository.findAll();
         if(!lstZooClient.isEmpty()) zooCliente.setId(lstZooClient.size() + 1);
         else zooCliente.setId(1);
-        if (!lstClientes.isEmpty()) zooCliente.getCliente().setId(lstClientes.size() + 1L);
-        else zooCliente.getCliente().setId(1L);
-        if (!lstZoo.isEmpty()) zooCliente.getZoo().setId(lstZoo.size() + 1L);
-        else zooCliente.getCliente().setId(1L);
-        Cliente cliente = clienteRepository.save(zooCliente.getCliente());
-        Zoo zoo = zooRepository.save(zooCliente.getZoo());
-        zooClienteRepository.save(new ZooCliente(cliente, zoo));
+        zooClienteRepository.save(new ZooCliente(
+                saveCliente(zooCliente.getCliente(), zooCliente),
+                saveZoo(zooCliente.getZoo(), zooCliente)));
         return true;
+    }
+
+    public Zoo saveZoo(Zoo zoo, ZooCliente zooCliente){
+        List<Zoo> lstZoo = zooRepository.findAll();
+        List<ZooCliente> lstZooClientes = getAll();
+        if (!lstZoo.isEmpty()) zoo.setId(lstZoo.size() + 1L);
+        else zoo.setId(1L);
+        zooRepository.save(zoo);
+        if (lstZooClientes.isEmpty()){
+            zoo.setZooClientes(new ArrayList<>(Arrays.asList(zooCliente)));
+        }else{
+            zoo.setOneZooCliente(zooCliente);
+        }
+        return zoo;
+    }
+
+    public Cliente saveCliente(Cliente cliente, ZooCliente zooCliente){
+        List<Cliente> lstClientes = clienteRepository.findAll();
+        if (!lstClientes.isEmpty()) cliente.setId(lstClientes.size() + 1L);
+        else cliente.setId(1L);
+        clienteRepository.save(cliente);
+        if (cliente.getZooClientes().isEmpty()){
+            cliente.setZooClientes(new ArrayList<>(Arrays.asList(zooCliente)));
+        }else{
+            cliente.setOneZooCliente(zooCliente);
+        }
+        return cliente;
     }
 
 }

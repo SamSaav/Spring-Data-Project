@@ -25,16 +25,13 @@ public class Zoo {
 
     public Zoo(){}
 
-    public Zoo(Long id, String nombre, List<Animal> animals, List<Empleado> empleados, List<ZooCliente> zooClientes) {
-        this.id = id;
+    public Zoo(String nombre, List<Animal> animals, List<Empleado> empleados) {
         this.nombre = nombre;
         this.animals = animals;
         this.empleados = empleados;
-        this.zooClientes = zooClientes;
     }
 
-    public void addZooCliente(ZooCliente zooCliente){
-        zooCliente.setZoo(this);
+    public void setOneZooCliente(ZooCliente zooCliente){
         zooClientes.add(zooCliente);
     }
 
