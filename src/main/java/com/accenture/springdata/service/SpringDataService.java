@@ -33,40 +33,31 @@ public class SpringDataService {
         return zooClienteRepository.getById(id);
     }
 
+
+
     public boolean saveZooClient(ZooCliente zooCliente){
         List<ZooCliente> lstZooClient = zooClienteRepository.findAll();
         if(!lstZooClient.isEmpty()) zooCliente.setId(lstZooClient.size() + 1);
         else zooCliente.setId(1);
         zooClienteRepository.save(new ZooCliente(
-                saveCliente(zooCliente.getCliente(), zooCliente),
-                saveZoo(zooCliente.getZoo(), zooCliente)));
+                saveCliente(zooCliente.getCliente()),
+                saveZoo(zooCliente.getZoo())));
         return true;
     }
 
-    public Zoo saveZoo(Zoo zoo, ZooCliente zooCliente){
+    public Zoo saveZoo(Zoo zoo){
         List<Zoo> lstZoo = zooRepository.findAll();
-        List<ZooCliente> lstZooClientes = getAll();
         if (!lstZoo.isEmpty()) zoo.setId(lstZoo.size() + 1L);
         else zoo.setId(1L);
         zooRepository.save(zoo);
-        if (lstZooClientes.isEmpty()){
-            zoo.setZooClientes(new ArrayList<>(Arrays.asList(zooCliente)));
-        }else{
-            zoo.setOneZooCliente(zooCliente);
-        }
         return zoo;
     }
 
-    public Cliente saveCliente(Cliente cliente, ZooCliente zooCliente){
+    public Cliente saveCliente(Cliente cliente){
         List<Cliente> lstClientes = clienteRepository.findAll();
         if (!lstClientes.isEmpty()) cliente.setId(lstClientes.size() + 1L);
         else cliente.setId(1L);
         clienteRepository.save(cliente);
-        if (cliente.getZooClientes().isEmpty()){
-            cliente.setZooClientes(new ArrayList<>(Arrays.asList(zooCliente)));
-        }else{
-            cliente.setOneZooCliente(zooCliente);
-        }
         return cliente;
     }
 
